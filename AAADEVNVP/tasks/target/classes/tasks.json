@@ -1,0 +1,107 @@
+﻿{
+    "name": "My Tasks-from-service.AAADEVNVP",
+    "categories": [
+        {
+            "name": "Notificacion De Vencimiento De Pago",
+            "mTypes": [
+                {
+                    "name": "AAADEVNVP",
+                    "snapinVersion": "3.0",
+                    "displayName": "AAADEVNVP",
+                    "tag": "notificacionVencimientoPago",
+                    //"async": "true",
+                    "svg": "notification-with-dollar-sign",
+                    "helpUrl": "hello.html",
+                    "tile": "gold",
+                    "serviceName": "CollabDesigner",
+                    "custom": "false", //MAYBE BE FALSE
+                    "nodeType": "activity",
+                    "publicReadable": "false",
+                    "modelClass": "service.AAADEVNVP.NVPModel",
+                    "executionClass": "service.AAADEVNVP.NVPExecution",
+                    "mapping": "[\"input\", \"output\"]",
+                    "displayProperties": "[{\"properties\": [\"SQLQueryStatement\"]}]",
+                    "forEach": "true",
+                    "properties": [
+                        {
+                            "name": "SQLQueryStatement",
+                            "displayPropName": "Body",
+                            "type": "String",
+                            "controlType": "multilineText",
+                            "textLines": "7",
+                            "modelName": "setSqlQuery"
+                        },                     
+                        {
+                            "name": "EmailCheckBock",
+                            "displayPropName": "Email",
+                            "type": "String",
+                            "controlType": "combo",
+                            "modelName": "setCheckEmal",
+                            "filler": "getInstance.checkBoxEmail",
+                            "fillerModel": "service.AAADEVNVP.FillerUtil"
+                        },                        
+                        {
+                            "name": "SMSCheckBock",
+                            "displayPropName": "SMS",
+                            "type": "String",
+                            "controlType": "combo",
+                            "modelName": "setCheckSMS",
+                            "filler": "getInstance.checkSMS",
+                            "fillerModel": "service.AAADEVNVP.FillerUtil"
+                        },
+                        {
+                            "name": "MakeCall",
+                            "displayPropName": "Make Call",
+                            "type": "String",
+                            "controlType": "combo",
+                            "modelName": "setMakeCall",
+                            "filler": "getInstance.checkCall",
+                            "fillerModel": "service.AAADEVNVP.FillerUtil"
+                        },
+                        {
+                            "name": "InputSchema",
+                            "displayPropName": "Input schema",
+                            "type": "String",
+                            "controlType": "multilineText",
+                            "textLines": "7",
+                            "showHideCheckbox": "true",
+                            "modelName": "setInputSchema",
+                            "readOnly": "true"
+                        },
+                        {
+                            "name": "GetInputSchema",
+                            "displayPropName": "Retrieve",
+                            "controlType": "button",
+                            //"clicker": "getInputDBSchema",
+                            //"clickerParam" : "{paramFields: [DatabaseProfileID, SQLQueryStatement] }",
+                            "clicker": "getInputDBSchemaBody",
+                            "clickerParam" : "{paramFields: [SQLQueryStatement, EmailCheckBock, SMSCheckBock, MakeCall]}",
+                            "clickerModel": "service.AAADEVNVP.DBTaskPropertyHandler",
+                            //"clickerLabel": "GetInputSchema",
+                            "clickerLabel": "getInputSchemaBody",
+                            "clickerTextField": "InputSchema"
+                        }
+                    ],
+                    "output_schema": "{
+                            title: OutputSchema,
+                            type: object,
+                            properties: {
+                                status: {
+                                    type: string
+                                },
+                                call: {
+                                    type: string
+                                },
+                                text: {
+                                    type: array,
+                                    items:{
+                                        type: string
+                                        }
+                                }
+                            }
+                    }"
+                }
+            ]
+        }
+    ]
+}

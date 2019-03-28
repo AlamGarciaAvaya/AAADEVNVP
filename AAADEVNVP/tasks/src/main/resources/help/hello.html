@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notificación Vencimiento de Pago Help</title>
+</head>
+
+<body style="font-family: 'Times New Roman', Times, serif">
+    <h2 style="color:rgb(204, 0, 82)">Notificación Vencimiento de Pago</h2>
+    <h4 style="font: bold">Descripción de la tarea</h4>
+    <p>La tarea se usa principalmente para recibir multiple strings o multiple numbers de una lectura de base de datos, cada inputParam se genera poniendo un "?" para Strings y un "°" para numbers en el cuerpo del mensaje. el caracter especial será sustituido
+        por el valor asignado en el inputParam establecido para formar boceto de mensaje variando las especicifaciones por la posioción del caracter introducido.
+    </p>
+
+    <h4 style="font: bold">Propiedades de la tarea</h4>
+    <ul>
+        <li>Body - Espacio multitext donde se introduce el mensaje que desea ser enviado, y se introducen los careacteres especiales "?" y "°" para crear inputParams en inputMapping</li>
+        <li>Email - Combo Box para elegir entre dos opciones, "Yes" para enviar por correo el mensaje escrito en Body al seleccionar esta opción se crea en el input Mapping un parámetro con nombre inputEmail el cual debe ser conectado a una variable multipleString
+            con correos electronicos y "No" para no enviar el mensaje </li>
+        <li>SMS - Combo Box para elegir entre dos opciones, "Yes" para enviar por SMS el mensaje escrito en Body al seleccionar esta opción se crea en el input Mapping un parámetro con nombre inputSMS el cual debe ser conectado a una variable multipleString
+            con una lista de numeros telefónicos moviles, y "No" para no enviar el mensaje</li>
+        <li>Input schema Show - Check box habilita multitext donde se mostrarán los paraámetros creados en el inputMapping</li>
+        <li>Retrieve - Botón que se usa para actualizar el registro de inputParams creados en el cuerpo del mensaje así como las opciones de Email y SMS</li>
+    </ul>
+    <h4 style="font: bold">Input schema</h4>
+    <ul>
+        <li>inputParam (n) - Input creado dinámicamente de acuerdo a la posición de los caracteres especiales "?" y "°" introducidos en el Body</li>
+        <li>inputEmail - Input creado dinámicamente al momento que se selecciona la opción "Yes" en el combo box de Email, es necesario conectar el inputEmail a una variable multipleStrings que contenga cuentas de corre electrónico válidas.</li>
+        <li>inputSMS - Input creado dinámicamente al momento que se selecciona la opción "Yes" en el combo box de SMS, es necesario conectar el inputSMS a una variable multipleStrings que numeros telefónicos válidos.</li>
+    </ul>
+
+    <h4 style="font: bold">Output schema</h4>
+    <ul>
+        <li>status - Indica si la operación seleccionada se ha realizado correctamente</li>
+    </ul>
+
+    <h4>Prerequisitos</h4>
+    <p>Mapear una base de datos para obtener valores y conectar cada inputParam creado</p>
+
+    <h4>Related Boundary Events</h4>
+    <p>No aplica</p>
+
+    <h4>Casos de uso</h4>
+    <p>Crear mensajes con parametros dinámicos y enviar de manera masiva a diferenes usuarios.</p>
+</body>
+
+</html>
